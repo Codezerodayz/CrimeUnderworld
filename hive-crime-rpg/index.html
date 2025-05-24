@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hive Crime RPG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="userInfo"></div>
+    <div id="playerStats"></div>
+    <!-- <<< NEW HEALTH BAR HTML START >>> -->
+    <div id="healthBarContainer" style="width: 200px; background-color: #ddd; border: 1px solid #666; margin-top: 5px; margin-bottom: 5px; padding: 1px;">
+        <div id="healthBar" style="width: 100%; height: 20px; background-color: #4CAF50; text-align: center; line-height: 20px; color: white;">
+            100/100
+        </div>
+    </div>
+    <!-- <<< NEW HEALTH BAR HTML END >>> -->
+    <div id="inventoryDisplay"></div>
+    <div id="locationInfo"></div>
+    <div id="gameMessages"></div>
+    <div id="actionButtons"></div>
+    <button id="loginButton">Login with Hive Keychain</button>
+    <script src="app.js"></script>
+</body>
+</html>
