@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hive Crime RPG</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <<< NEW: Socket.IO Client Library >>> -->
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+<body>
+    <div id="navMenu">
+        <button class="nav-button" id="navTravel">City</button>
+        <button class="nav-button" id="navActions">Actions</button>
+        <button class="nav-button" id="navPlayer">Character</button>
+        <button class="nav-button" id="navShops">Shops</button>
+        <button class="nav-button" id="navJobs">Jobs</button>
+    </div>
+    <hr>
+
+    <div id="gameContainer">
+        <div id="leftPanel">
+            <div id="userInfo"></div>
+            <div id="playerStats"></div>
+            <div id="healthBarContainer" style="width: 100%; background-color: #ddd; border: 1px solid #666; margin-top: 5px; margin-bottom: 5px; padding: 1px; box-sizing: border-box;">
+                <div id="healthBar" style="width: 100%; height: 20px; background-color: #4CAF50; text-align: center; line-height: 20px; color: white; box-sizing: border-box;">100/100</div>
+            </div>
+            <div id="nerveBarContainer" style="width: 100%; background-color: #ddd; border: 1px solid #666; margin-top: 5px; margin-bottom: 5px; padding: 1px; box-sizing: border-box;">
+                <div id="nerveBar" style="width: 100%; height: 20px; background-color: #2196F3; text-align: center; line-height: 20px; color: white; box-sizing: border-box;">100/100</div>
+            </div>
+            <div id="inventoryDisplay"><h3>Inventory:</h3><p>Your pockets are empty.</p></div>
+        </div>
+
+        <div id="mainContent">
+            <div id="locationInfo"></div>
+            <div id="dynamicActions"></div> <!-- This will replace original actionButtons for context-specific actions -->
+        </div>
+
+        <div id="rightPanel">
+             <div id="gameMessages"></div>
+             <!-- <<< NEW: Chat Area >>> -->
+             <div id="chatArea">
+                <h3>Chat</h3>
+                <div id="chatMessages" style="height: 150px; overflow-y: auto; border: 1px solid #ccc; padding: 5px; margin-bottom: 5px;"></div>
+                <input type="text" id="chatInput" placeholder="Type message..." style="width: calc(100% - 70px); padding: 5px;"/>
+                <button id="sendChatButton" style="padding: 5px;">Send</button>
+             </div>
+        </div>
+    </div>
+    
+    <button id="loginButton">Login with Hive Keychain</button>
+    <script src="app.js"></script>
+</body>
+</html>
