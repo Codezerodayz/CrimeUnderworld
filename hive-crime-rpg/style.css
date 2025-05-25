@@ -14,10 +14,14 @@ body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: 
 #dynamicActions button:hover { background-color: #0056b3; }
 
 /* Styles for bars from JS - just to have them if needed */
-#healthBarContainer, #nerveBarContainer { width: 100%; /* Adjust to fit left panel */ background-color: #ddd; border: 1px solid #666; margin-top: 5px; margin-bottom: 10px; padding: 1px; box-sizing: border-box;}
-#healthBar, #nerveBar { height: 20px; text-align: center; line-height: 20px; color: white; transition: width 0.5s ease-in-out; box-sizing: border-box;}
+#healthBarContainer, #nerveBarContainer, #energyBarContainer { width: 100%; /* Adjust to fit left panel */ background-color: #ddd; border: 1px solid #666; margin-top: 5px; margin-bottom: 10px; padding: 1px; box-sizing: border-box;}
+#healthBar, #nerveBar, #energyBar { height: 20px; text-align: center; line-height: 20px; color: white; transition: width 0.5s ease-in-out; box-sizing: border-box;}
 #healthBar { background-color: #4CAF50; }
 #nerveBar { background-color: #2196F3; }
+#energyBar { 
+    background-color: #FFEB3B; /* Yellow - for high energy default */
+    color: black; /* Default text color for yellow */
+}
 
 #loginButton { display: block; margin: 20px auto; padding: 10px 20px; font-size: 16px; }
 
