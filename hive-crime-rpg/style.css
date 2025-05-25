@@ -26,3 +26,14 @@ body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: 
 #loginButton { display: block; margin: 20px auto; padding: 10px 20px; font-size: 16px; }
 
 h3 { margin-top: 0; }
+
+.disabled-button {
+    background-color: #ccc !important; /* Grey background, override other button styles */
+    color: #666 !important;           /* Darker grey text */
+    cursor: not-allowed !important;   /* "Not allowed" cursor */
+    opacity: 0.7;                     /* Slightly faded */
+}
+.disabled-button:hover {
+    background-color: #ccc !important; /* Keep hover state same as disabled */
+    color: #666 !important;
+}
