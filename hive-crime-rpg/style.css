@@ -27,6 +27,22 @@ body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: 
 
 h3 { margin-top: 0; }
 
+.item-image {
+    max-width: 32px; /* Or your preferred size */
+    max-height: 32px; /* Or your preferred size */
+    vertical-align: middle;
+    margin-right: 8px;
+    border: 1px solid #eee; /* Optional: adds a light border */
+    border-radius: 3px;   /* Optional: slightly rounded corners */
+}
+
+/* Optional: if using images within list items in inventory */
+#inventoryDisplay ul li, #mainContent ul li { /* Assuming inventory in Player view might be in mainContent */
+    display: flex; /* Align item text and image/button on one line */
+    align-items: center; /* Vertically align items in the flex container */
+    margin-bottom: 5px;
+}
+
 .disabled-button {
     background-color: #ccc !important; /* Grey background, override other button styles */
     color: #666 !important;           /* Darker grey text */
