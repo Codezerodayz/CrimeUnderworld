@@ -1,55 +1,137 @@
-body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f0f0f0; }
-#navMenu { background-color: #333; padding: 10px; text-align: center; }
-.nav-button { background-color: #555; color: white; border: none; padding: 10px 15px; margin: 0 5px; cursor: pointer; border-radius: 4px; }
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #f0f0f0; 
+    display: flex; /* For centering login button */
+    justify-content: center; /* For centering login button */
+    align-items: center; /* For centering login button */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+/* Initially hide main game elements */
+#navMenu, #gameContainer {
+    display: none;
+}
+
+/* Styles for when game elements are shown (from previous state) */
+#navMenu.shown { /* Add .shown class via JS to display */
+    display: block; /* Or 'flex' if it's a flex container */
+    background-color: #333; 
+    padding: 10px; 
+    text-align: center; 
+    width: 100%; /* Ensure it takes full width when shown */
+    position: fixed; /* Or absolute, depending on desired layout */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+#gameContainer.shown { /* Add .shown class via JS to display */
+    display: flex; 
+    padding: 10px; 
+    margin-top: 60px; /* Adjust based on navMenu height */
+    width: calc(100% - 20px); /* Adjust for padding */
+    box-sizing: border-box;
+}
+
+
+.nav-button { 
+    background-color: #555; 
+    color: white; 
+    border: none; 
+    padding: 10px 15px; 
+    margin: 0 5px; 
+    cursor: pointer; 
+    border-radius: 4px; 
+}
 .nav-button:hover { background-color: #777; }
 
-#gameContainer { display: flex; padding: 10px; }
 #leftPanel { flex: 1; padding-right: 10px; }
 #mainContent { flex: 2; padding-left: 10px; padding-right: 10px; border-left: 1px solid #ccc; border-right: 1px solid #ccc;}
 #rightPanel { flex: 1; padding-left: 10px; }
 
-#playerStats, #inventoryDisplay, #locationInfo, #gameMessages, #userInfo { margin-bottom: 15px; padding:10px; background-color: #fff; border: 1px solid #ddd; border-radius: 4px;}
-#gameMessages { max-height: 300px; overflow-y: auto; }
-#dynamicActions button { display: block; margin-bottom: 8px; padding: 8px; width: 95%; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+#playerStats, #inventoryDisplay, #locationInfo, #gameMessages, #userInfo { 
+    margin-bottom: 15px; 
+    padding:10px; 
+    background-color: #fff; 
+    border: 1px solid #ddd; 
+    border-radius: 4px;
+}
+#gameMessages { max-height: 300px; overflow-y: auto; } /* Ensure this is appropriate for rightPanel */
+#chatArea { margin-top: 15px; }
+#chatMessages { height: 150px; overflow-y: auto; border: 1px solid #ccc; padding: 5px; margin-bottom: 5px; background-color: #fff; }
+
+
+#dynamicActions button { 
+    display: block; 
+    margin-bottom: 8px; 
+    padding: 8px; 
+    width: 95%; /* Consider 100% with box-sizing: border-box if padding is inside */
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    box-sizing: border-box;
+}
 #dynamicActions button:hover { background-color: #0056b3; }
 
-/* Styles for bars from JS - just to have them if needed */
-#healthBarContainer, #nerveBarContainer, #energyBarContainer { width: 100%; /* Adjust to fit left panel */ background-color: #ddd; border: 1px solid #666; margin-top: 5px; margin-bottom: 10px; padding: 1px; box-sizing: border-box;}
-#healthBar, #nerveBar, #energyBar { height: 20px; text-align: center; line-height: 20px; color: white; transition: width 0.5s ease-in-out; box-sizing: border-box;}
+#healthBarContainer, #nerveBarContainer, #energyBarContainer { 
+    width: 100%; 
+    background-color: #ddd; 
+    border: 1px solid #666; 
+    margin-top: 5px; 
+    margin-bottom: 10px; 
+    padding: 1px; 
+    box-sizing: border-box;
+}
+#healthBar, #nerveBar, #energyBar { 
+    height: 20px; 
+    text-align: center; 
+    line-height: 20px; 
+    color: white; 
+    transition: width 0.5s ease-in-out; 
+    box-sizing: border-box;
+}
 #healthBar { background-color: #4CAF50; }
 #nerveBar { background-color: #2196F3; }
-#energyBar { 
-    background-color: #FFEB3B; /* Yellow - for high energy default */
-    color: black; /* Default text color for yellow */
+#energyBar { background-color: #FFEB3B; color: black; }
+
+#loginButton { 
+    padding: 15px 30px; 
+    font-size: 18px; 
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* display: block; /* JS will handle display none/block */
+}
+#loginButton.hidden { /* Add .hidden class via JS to hide */
+    display: none;
 }
 
-#loginButton { display: block; margin: 20px auto; padding: 10px 20px; font-size: 16px; }
 
 h3 { margin-top: 0; }
 
-.item-image {
-    max-width: 32px; /* Or your preferred size */
-    max-height: 32px; /* Or your preferred size */
-    vertical-align: middle;
-    margin-right: 8px;
-    border: 1px solid #eee; /* Optional: adds a light border */
-    border-radius: 3px;   /* Optional: slightly rounded corners */
-}
-
-/* Optional: if using images within list items in inventory */
-#inventoryDisplay ul li, #mainContent ul li { /* Assuming inventory in Player view might be in mainContent */
-    display: flex; /* Align item text and image/button on one line */
-    align-items: center; /* Vertically align items in the flex container */
-    margin-bottom: 5px;
-}
-
 .disabled-button {
-    background-color: #ccc !important; /* Grey background, override other button styles */
-    color: #666 !important;           /* Darker grey text */
-    cursor: not-allowed !important;   /* "Not allowed" cursor */
-    opacity: 0.7;                     /* Slightly faded */
+    background-color: #ccc !important; 
+    color: #666 !important;           
+    cursor: not-allowed !important;   
+    opacity: 0.7;                     
 }
 .disabled-button:hover {
-    background-color: #ccc !important; /* Keep hover state same as disabled */
+    background-color: #ccc !important; 
     color: #666 !important;
 }
+
+.home-feature-image {
+    max-width: 150px; /* Or your preferred size for a larger image */
+    max-height: 150px;
+    display: block; /* To allow margin auto to center if desired, or just for spacing */
+    margin: 0 auto 10px auto; /* Center image and add margin below */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+```
